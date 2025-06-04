@@ -15,13 +15,8 @@ public class Game {
                 if(guessNumber.charAt(i) == question.charAt(i)) {
                     strikes++;
                 }
-
-                for(int k = 0; k < 3; k++) {
-                    if(i == k) {
-                        continue;
-                    }
-
-                    if(guessNumber.charAt(i) == question.charAt(k)) {
+                else{
+                    if(isGuessNumberInQuestionNumber(guessNumber.charAt(i))) {
                         balls++;
                     }
                 }
@@ -55,5 +50,15 @@ public class Game {
         return guessNumber.charAt(0) == guessNumber.charAt(1)
                 || guessNumber.charAt(1) == guessNumber.charAt(2)
                 || guessNumber.charAt(2) == guessNumber.charAt(0);
+    }
+
+    private boolean isGuessNumberInQuestionNumber(char number) {
+        for(int i = 0; i < question.length(); i++) {
+            if(number == question.charAt(i)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
