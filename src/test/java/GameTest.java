@@ -48,6 +48,18 @@ class GameTest {
         assertMatched(game.guess("456"), false, 0, 0);
     }
 
+    @Test
+    public void returnResultTwoStrikesZeroBall() {
+        generateQuestion("123");
+        assertMatched(game.guess("143"), false, 2, 0);
+    }
+
+    @Test
+    public void returnResultOneStrikeTwoBalls() {
+        generateQuestion("123");
+        assertMatched(game.guess("132"), false, 1, 2);
+    }
+
     private void assertMatched(GuessResult result, boolean solved, int strikes, int balls) {
         assertThat(result).isNotNull();
         assertThat(result.isSolved()).isEqualTo(solved);

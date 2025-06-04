@@ -8,7 +8,26 @@ public class Game {
             return new GuessResult(true, 3, 0);
         }
         else{
-            return new GuessResult(false, 0, 0);
+            int strikes = 0;
+            int balls = 0;
+
+            for(int i = 0; i < 3; i++) {
+                if(guessNumber.charAt(i) == question.charAt(i)) {
+                    strikes++;
+                }
+
+                for(int k = 0; k < 3; k++) {
+                    if(i == k) {
+                        continue;
+                    }
+
+                    if(guessNumber.charAt(i) == question.charAt(k)) {
+                        balls++;
+                    }
+                }
+            }
+
+            return new GuessResult(false, strikes, balls);
         }
     }
 
